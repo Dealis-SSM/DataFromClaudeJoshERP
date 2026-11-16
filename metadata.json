@@ -1,0 +1,6 @@
+{
+  "name": "Estrumetal · Auditoría de Costeo y Cotizaciones",
+  "description": "Auditoría cronológica de datos de negocio, errores de uso, contradicciones por fecha y modelos finales de cotización de fábrica extraídos del archivo de Claude.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
