@@ -15,13 +15,21 @@ import {
   REPO_TRIAGE_SUMMARY,
   TIMELINE_ERAS,
 } from '../data/estrumetalAuditData';
+import type { ShopSmartSwitches } from '../utils/shopSmartAudit';
+import { ShopSmartAuditSection } from './ShopSmartAuditSection';
 import type { ActiveTab } from './TopBar';
 
 interface OverviewSectionProps {
   onNavigate: (tab: ActiveTab, options?: { filterMisused?: boolean; focusSimulator?: boolean }) => void;
+  shopSmartSwitches: ShopSmartSwitches;
+  onChangeShopSmartSwitches: (next: ShopSmartSwitches) => void;
 }
 
-export function OverviewSection({ onNavigate }: OverviewSectionProps) {
+export function OverviewSection({
+  onNavigate,
+  shopSmartSwitches,
+  onChangeShopSmartSwitches,
+}: OverviewSectionProps) {
   const misusedCount = BUSINESS_DATA_RECORDS.filter((r) => r.usageAndAudit.wasMisused).length;
   const openContradictionsCount = CONTRADICTIONS.filter(
     (c) => c.status !== 'resuelta_aplicada'
@@ -351,6 +359,13 @@ export function OverviewSection({ onNavigate }: OverviewSectionProps) {
           </p>
         </button>
       </section>
+
+      {/* Sección tipo presentación al bajar: Auditoría interactiva Excel ShopSmart */}
+      <ShopSmartAuditSection
+        switches={shopSmartSwitches}
+        onChangeSwitches={onChangeShopSmartSwitches}
+        sectionId="auditoria-shopsmart"
+      />
     </div>
   );
 }
