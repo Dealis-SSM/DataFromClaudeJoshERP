@@ -6,6 +6,7 @@
 import { useState } from 'react';
 import { ContradictionsSection } from './components/ContradictionsSection';
 import { DataTraceabilitySection } from './components/DataTraceabilitySection';
+import { MachineModelsComparisonSection } from './components/MachineModelsComparisonSection';
 import { ModelsAndSimulatorSection } from './components/ModelsAndSimulatorSection';
 import { OverviewSection } from './components/OverviewSection';
 import { SessionsLedgerSection } from './components/SessionsLedgerSection';
@@ -58,6 +59,9 @@ export default function App() {
             onChangeSwitches={setShopSmartSwitches}
             sectionId="auditoria-shopsmart-tab"
           />
+        )}
+        {activeTab === 'maquinas' && (
+          <MachineModelsComparisonSection sectionId="maquinas-y-modelos-tab" />
         )}
         {activeTab === 'datos' && (
           <DataTraceabilitySection initialOnlyMisused={misusedOnlyTrigger} />

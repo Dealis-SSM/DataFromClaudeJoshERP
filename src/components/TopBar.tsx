@@ -4,6 +4,7 @@ import { useState } from 'react';
 export type ActiveTab =
   | 'resumen'
   | 'shopsmart'
+  | 'maquinas'
   | 'datos'
   | 'contradicciones'
   | 'modelos'
@@ -17,10 +18,11 @@ interface TopBarProps {
 
 const NAV_ITEMS: Array<{ id: ActiveTab; label: string }> = [
   { id: 'resumen', label: 'Resumen' },
-  { id: 'shopsmart', label: 'Caso ShopSmart' },
-  { id: 'datos', label: 'Datos y Trazabilidad' },
+  { id: 'shopsmart', label: 'ShopSmart' },
+  { id: 'maquinas', label: 'Máquinas' },
+  { id: 'datos', label: 'Datos' },
   { id: 'contradicciones', label: 'Contradicciones' },
-  { id: 'modelos', label: 'Fórmulas y Modelos' },
+  { id: 'modelos', label: 'Modelos' },
   { id: 'sesiones', label: 'Sesiones' },
 ];
 

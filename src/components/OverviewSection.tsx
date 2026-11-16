@@ -16,6 +16,7 @@ import {
   TIMELINE_ERAS,
 } from '../data/estrumetalAuditData';
 import type { ShopSmartSwitches } from '../utils/shopSmartAudit';
+import { MachineModelsComparisonSection } from './MachineModelsComparisonSection';
 import { ShopSmartAuditSection } from './ShopSmartAuditSection';
 import type { ActiveTab } from './TopBar';
 
@@ -298,7 +299,7 @@ export function OverviewSection({
       </section>
 
       {/* Mapa de acceso rápido a las vistas */}
-      <section className="grid gap-4 sm:grid-cols-3">
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <button
           type="button"
           onClick={() => onNavigate('datos')}
@@ -341,6 +342,26 @@ export function OverviewSection({
 
         <button
           type="button"
+          onClick={() => onNavigate('maquinas')}
+          className="group rounded-lg border border-slate-200 bg-white p-5 text-left transition-colors hover:border-[#002054]"
+        >
+          <div className="flex items-center justify-between">
+            <Layers className="h-5 w-5 text-[#002054]" aria-hidden="true" />
+            <ArrowRight
+              className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-[#002054]"
+              aria-hidden="true"
+            />
+          </div>
+          <h3 className="mt-3 font-display text-base font-bold text-slate-900">
+            Máquinas, Luz BT4 y Propuestas
+          </h3>
+          <p className="mt-1 text-sm text-slate-600">
+            Gráficos de cómo afectaba cada método, las 20 máquinas y los 3 modelos propuestos.
+          </p>
+        </button>
+
+        <button
+          type="button"
           onClick={() => onNavigate('modelos', { focusSimulator: true })}
           className="group rounded-lg border border-slate-200 bg-white p-5 text-left transition-colors hover:border-[#002054]"
         >
@@ -366,6 +387,9 @@ export function OverviewSection({
         onChangeSwitches={onChangeShopSmartSwitches}
         sectionId="auditoria-shopsmart"
       />
+
+      {/* Sección gráfica al bajar: Comparativa de métodos de maquinaria, mantenimiento y luz + modelos propuestos */}
+      <MachineModelsComparisonSection sectionId="maquinas-y-modelos" />
     </div>
   );
 }
